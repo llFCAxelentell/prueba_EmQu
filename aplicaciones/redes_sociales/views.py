@@ -62,6 +62,7 @@ def estadisticas(request):
         maximo = []
         for r in rangos:
             if (Encuesta.objects.filter(rango_edad = r).count() < 1):
+                maximo.append(0)
                 continue
             else:
                 prom = Encuesta.objects.filter(rango_edad = r).aggregate(promedio = Sum(F(p))/Count('rango_edad'))
