@@ -9,6 +9,12 @@ Requisito: tener instalado Django 4.0.1
 - Instalar Django en caso de no tenerlo.
 
 
-1. Descargar el .zip del repositorio, extraer todo el contenido y guardarlo/moverlo a donde se tenga Django.
+1. Descargar el .zip del repositorio, extraer todo el contenido y guardarlo/moverlo a donde se tenga Django (entorno virtual o local).
 2. Abrir la terminal o git bash, y moverse a la ruta donde se encuentra el proyecto.
-3. 
+3. Poner python    manage.py makemigrations [nombre proyecto]    y posteriormente    python manage.py migrate
+4. Finalmente poner python manage.py runserver
+5. Ingresar a http://localhost:8000/
+
+Nota: También se puede crear un superusuario (aunque no es indispensable) con python manage.py createsuperuser
+
+## Axel González Carreto
