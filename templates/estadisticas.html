@@ -1,0 +1,130 @@
+{% extends "./plantilla.html" %}
+
+{% block title %}
+
+Estadísticas
+
+{% endblock %}
+
+
+{% block body %}
+
+
+<br>
+<h1 class = "text-center text-primary" >Estadísticas</h1>
+<br>
+
+<div class = "mb-3">
+    <h3 class = "text-center" >Encuestas respondidas: {{encuestas}}</h2>
+</div>
+
+<br>
+<canvas id = "tiempo_prom_red_social_chart" width = "200px" height = "200px"></canvas>
+<br>
+<script>
+    const ctx = document.getElementById('tiempo_prom_red_social_chart').getContext('2d');
+    const myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Facebook', 'WhatsApp', 'Twitter', 'Instagram', 'Tiktok'],
+            datasets: [{
+                label: 'Tiempo en minutos',
+                data: [{{ prom_FB.prom_FB__avg }},{{prom_WA.prom_WA__avg}}, {{prom_TW.prom_TW__avg}}, {{prom_IN.prom_IN__avg}}, {{prom_TK.prom_TK__avg}}],
+                 backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            plugins: {
+             title:{
+                    display: true,
+                    text: 'Tiempo promedio al día por red social'
+                }
+            }
+        }
+    });
+</script>
+
+
+<br>
+    <canvas id = "red_social_fav_chart" width="200px" height="200px"></canvas>
+<br>
+<script>
+    const ctx2 = document.getElementById('red_social_fav_chart').getContext('2d');
+    const myChart2 = new Chart(ctx2, {
+        type: 'pie',
+        data: {
+            labels: ['Facebook', 'WhatsApp', 'Twitter', 'Instagram', 'Tiktok'],
+            datasets: [{
+                label: '# Usuarios',
+                data: [{{fav_FB}}, {{fav_WA}}, {{fav_TW}}, {{fav_IN}}, {{fav_TK}}],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)'
+                ],
+                borderColor: [
+                'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)'
+                ],
+                borderWidth: 1
+            }]
+         },
+        options: {
+            plugins: {
+                title:{
+                    display: true,
+                    text: 'Red social favorita'
+                }
+            }
+        }
+    });
+</script>
+
+<br>
+<div class = "mb-3">
+    <h3 class = "text-center" >Rango de edad que más usa cada red social</h2>
+</div>
+<ul class="list-group">
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      Facebook
+      <span class="badge bg-primary rounded-pill">{{rango_FB}}</span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      WhatsApp
+      <span class="badge bg-primary rounded-pill">{{rango_WA}}</span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      Twitter
+      <span class="badge bg-primary rounded-pill">{{rango_TW}}</span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        Instagram
+        <span class="badge bg-primary rounded-pill">{{rango_IN}}</span>
+      </li>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        Tiktok
+        <span class="badge bg-primary rounded-pill">{{rango_TK}}</span>
+      </li>
+  </ul>
+  <br>
+
+{% endblock %}

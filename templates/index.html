@@ -1,0 +1,71 @@
+{% extends "./plantilla.html" %}
+
+{% block title %}
+
+Encuesta
+
+{% endblock %}
+
+
+{% block body %}
+
+<br>
+<h1 class = "text-center" >Encuesta</h1>
+<br>
+
+<form action = "/reguistrarEncuesta/" method = "POST"> {% csrf_token %}
+    <div class = "mb-3">
+      <label for = "txtCorreo" class="form-label">Correo electrónico</label>
+      <input type = "email" class = "form-control" id = "txtCorreo" name = "txtCorreo" placeholder = "ejemplo@ejemplo.com" maxlength = "100" aria-describedby="emailHelp" required>
+      <div id = "emailHelp" class = "form-text">No se compartirá con nadie.</div>
+    </div>
+
+    <select id = "txtEdad" name = "txtEdad" class = "form-select form-select-md mb-3" aria-label = ".form-select-md example" required>
+        <option selected>Edad</option>
+        <option value="18-25">18-25</option>
+        <option value="26-33">26-33</option>
+        <option value="34-40">34-40</option>
+        <option value="40+">40+</option>
+    </select>
+
+    <div class = "mb-3">
+      <label for = "txtSexo" class = "form-label">Sexo</label>
+      <input type="text" class = "form-control" id = "txtSexo" name = "txtSexo" placeholder = "Hombre/Mujer/Otro" required>
+    </div>
+
+    <div class="mb-3">
+      <label for = "txtFav" class = "form-label">Red social favorita</label>
+      <input type = "text" class = "form-control" id = "txtFav" name = "txtFav" placeholder = "Ej. Facebook" required>
+    </div>
+
+    <div class="mb-3">
+        <label for = "intFB" class = "form-label">Tiempo promedio al día en Facebook</label>
+        <input type = "number" class = "form-control" id = "intFB" name = "intFB" placeholder = "Tiempo en minutos" required>
+    </div>
+
+    <div class="mb-3">
+        <label for = "intWA" class = "form-label">Tiempo promedio al día en WhatsApp</label>
+        <input type = "number" class = "form-control" id = "intWA" name = "intWA" placeholder = "Tiempo en minutos" required>
+    </div>
+
+    <div class="mb-3">
+        <label for = "intTW" class = "form-label">Tiempo promedio al día en Twitter</label>
+        <input type = "number" class = "form-control" id = "intTW" name = "intTW" placeholder = "Tiempo en minutos" required>
+    </div>
+
+    <div class="mb-3">
+        <label for = "intIN" class = "form-label">Tiempo promedio al día en Instagram</label>
+        <input type = "number" class = "form-control" id = "intIN" name = "intIN" placeholder = "Tiempo en minutos" required>
+    </div>
+
+    <div class="mb-3">
+        <label for = "intTK" class = "form-label">Tiempo promedio al día en Tiktok</label>
+        <input type = "number" class = "form-control" id = "intTK" name = "intTK" placeholder = "Tiempo en minutos" required>
+    </div>
+
+    <br>
+    <button type="submit" class="btn btn-primary">Enviar</button>
+</form>
+<br>
+
+{% endblock %}
